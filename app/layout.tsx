@@ -3,16 +3,17 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { LangProvider } from "@/lib/i18n";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
 });
 
 export const metadata: Metadata = {
-  title: "Black Queen Ops — Fintech Advisory & Compliance",
+  title: "Black Queen Ops — Merchant Onboarding & Payment Solutions",
   description:
-    "International fintech advisory firm specializing in e-commerce compliance, payment solutions, and strategic consulting for digital businesses worldwide.",
+    "Frontshop development, merchant onboarding, and payment infrastructure for digital goods, eSIM, and online education worldwide.",
 };
 
 export default function RootLayout({
@@ -23,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <LangProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </LangProvider>
       </body>
     </html>
   );
