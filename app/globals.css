@@ -1,25 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #e5e5e5;
-  --gold: #c9a84c;
-  --gold-light: #dfc06b;
-  --gold-dark: #a68a3a;
-  --surface: #141414;
-  --surface-light: #1e1e1e;
-  --border: #2a2a2a;
+  --background: #fafafa;
+  --foreground: #1a1a1a;
+  --heading: #0d0d0d;
+  --muted: #444444;
+  --gold: #b8971f;
+  --gold-light: #d4af37;
+  --gold-dark: #9a7d15;
+  --surface-dark: #0d0d0d;
+  --surface-dark-alt: #111111;
+  --text-on-dark: #f5f0e8;
+  --text-muted-on-dark: #c8c0b0;
+  --border-light: #e0dcd4;
+  --border-dark: #2a2a2a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-heading: var(--heading);
+  --color-muted: var(--muted);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
   --color-gold-dark: var(--gold-dark);
-  --color-surface: var(--surface);
-  --color-surface-light: var(--surface-light);
-  --color-border: var(--border);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-dark-alt: var(--surface-dark-alt);
+  --color-text-on-dark: var(--text-on-dark);
+  --color-text-muted-on-dark: var(--text-muted-on-dark);
+  --color-border-light: var(--border-light);
+  --color-border-dark: var(--border-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -32,5 +42,5 @@ body {
 
 ::selection {
   background: var(--gold);
-  color: #000;
+  color: #fff;
 }

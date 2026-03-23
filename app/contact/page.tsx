@@ -8,80 +8,81 @@ export default function Contact() {
 
   return (
     <>
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-        <ChessBackground variant="strategy" />
+      {/* Hero area — dark */}
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-surface-dark">
+        <ChessBackground variant="strategy" theme="dark" />
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="max-w-2xl mx-auto text-center mb-14">
             <p className="text-gold text-sm font-medium tracking-widest uppercase mb-4">
               {t("contact.tag")}
             </p>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-text-on-dark">
               {t("contact.title1")}{" "}
               <span className="text-gold">{t("contact.title2")}</span>
             </h1>
-            <p className="text-lg text-foreground/60">{t("contact.desc")}</p>
+            <p className="text-lg text-text-muted-on-dark">{t("contact.desc")}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             {/* Contact Info */}
             <div>
-              <h2 className="text-xl font-bold mb-6">{t("contact.info.title")}</h2>
+              <h2 className="text-xl font-bold mb-6 text-text-on-dark">{t("contact.info.title")}</h2>
               <div className="space-y-6">
                 <div>
                   <div className="text-sm text-gold font-medium mb-1">{t("contact.email")}</div>
-                  <a href="mailto:info@blackqueenops.com" className="text-foreground/70 hover:text-gold transition-colors">
+                  <a href="mailto:info@blackqueenops.com" className="text-text-muted-on-dark hover:text-gold transition-colors">
                     info@blackqueenops.com
                   </a>
                 </div>
                 <div>
                   <div className="text-sm text-gold font-medium mb-1">{t("contact.telegram")}</div>
-                  <a href="https://t.me/blackqueenops" className="text-foreground/70 hover:text-gold transition-colors">
+                  <a href="https://t.me/blackqueenops" className="text-text-muted-on-dark hover:text-gold transition-colors">
                     @blackqueenops
                   </a>
                 </div>
                 <div>
                   <div className="text-sm text-gold font-medium mb-1">{t("contact.linkedin")}</div>
-                  <a href="https://linkedin.com/company/blackqueenops" className="text-foreground/70 hover:text-gold transition-colors">
+                  <a href="https://linkedin.com/company/blackqueenops" className="text-text-muted-on-dark hover:text-gold transition-colors">
                     Black Queen Ops
                   </a>
                 </div>
                 <div>
                   <div className="text-sm text-gold font-medium mb-1">{t("contact.location")}</div>
-                  <p className="text-foreground/70">
+                  <p className="text-text-muted-on-dark">
                     {t("contact.location.value")}
                     <br />
-                    <span className="text-foreground/40 text-sm">{t("contact.location.sub")}</span>
+                    <span className="text-text-muted-on-dark text-sm">{t("contact.location.sub")}</span>
                   </p>
                 </div>
               </div>
 
-              <div className="mt-10 p-5 bg-surface/80 backdrop-blur-sm border border-border rounded-lg">
-                <h3 className="font-semibold mb-2">{t("contact.response.title")}</h3>
-                <p className="text-sm text-foreground/50">{t("contact.response.desc")}</p>
+              <div className="mt-10 p-5 bg-surface-dark-alt border border-border-dark rounded-lg">
+                <h3 className="font-semibold mb-2 text-text-on-dark">{t("contact.response.title")}</h3>
+                <p className="text-sm text-text-muted-on-dark">{t("contact.response.desc")}</p>
               </div>
             </div>
 
             {/* Form */}
             <div>
-              <h2 className="text-xl font-bold mb-6">{t("contact.form.title")}</h2>
+              <h2 className="text-xl font-bold mb-6 text-text-on-dark">{t("contact.form.title")}</h2>
               <form className="space-y-5">
                 <div>
-                  <label htmlFor="name" className="block text-sm text-foreground/70 mb-1">{t("contact.form.name")}</label>
-                  <input type="text" id="name" className="w-full bg-surface border border-border rounded px-4 py-2.5 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-gold/50 transition-colors" placeholder={t("contact.form.name.ph")} />
+                  <label htmlFor="name" className="block text-sm text-text-muted-on-dark mb-1">{t("contact.form.name")}</label>
+                  <input type="text" id="name" className="w-full bg-surface-dark-alt border border-border-dark rounded px-4 py-2.5 text-text-on-dark placeholder:text-text-muted-on-dark/50 focus:outline-none focus:border-gold transition-colors" placeholder={t("contact.form.name.ph")} />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm text-foreground/70 mb-1">{t("contact.form.email")}</label>
-                  <input type="email" id="email" className="w-full bg-surface border border-border rounded px-4 py-2.5 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-gold/50 transition-colors" placeholder={t("contact.form.email.ph")} />
+                  <label htmlFor="email" className="block text-sm text-text-muted-on-dark mb-1">{t("contact.form.email")}</label>
+                  <input type="email" id="email" className="w-full bg-surface-dark-alt border border-border-dark rounded px-4 py-2.5 text-text-on-dark placeholder:text-text-muted-on-dark/50 focus:outline-none focus:border-gold transition-colors" placeholder={t("contact.form.email.ph")} />
                 </div>
                 <div>
-                  <label htmlFor="company" className="block text-sm text-foreground/70 mb-1">{t("contact.form.company")}</label>
-                  <input type="text" id="company" className="w-full bg-surface border border-border rounded px-4 py-2.5 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-gold/50 transition-colors" placeholder={t("contact.form.company.ph")} />
+                  <label htmlFor="company" className="block text-sm text-text-muted-on-dark mb-1">{t("contact.form.company")}</label>
+                  <input type="text" id="company" className="w-full bg-surface-dark-alt border border-border-dark rounded px-4 py-2.5 text-text-on-dark placeholder:text-text-muted-on-dark/50 focus:outline-none focus:border-gold transition-colors" placeholder={t("contact.form.company.ph")} />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm text-foreground/70 mb-1">{t("contact.form.message")}</label>
-                  <textarea id="message" rows={5} className="w-full bg-surface border border-border rounded px-4 py-2.5 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-gold/50 transition-colors resize-none" placeholder={t("contact.form.message.ph")} />
+                  <label htmlFor="message" className="block text-sm text-text-muted-on-dark mb-1">{t("contact.form.message")}</label>
+                  <textarea id="message" rows={5} className="w-full bg-surface-dark-alt border border-border-dark rounded px-4 py-2.5 text-text-on-dark placeholder:text-text-muted-on-dark/50 focus:outline-none focus:border-gold transition-colors resize-none" placeholder={t("contact.form.message.ph")} />
                 </div>
-                <button type="submit" className="w-full bg-gold text-black py-3 rounded font-medium hover:bg-gold-light transition-colors">
+                <button type="submit" className="w-full bg-gold text-heading py-3 rounded font-medium hover:bg-gold-light transition-colors">
                   {t("contact.form.submit")}
                 </button>
               </form>

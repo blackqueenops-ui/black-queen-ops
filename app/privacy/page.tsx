@@ -6,69 +6,53 @@ export const metadata: Metadata = {
 
 export default function Privacy() {
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-28">
+    <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-white">
       <div className="max-w-3xl mx-auto px-6">
-        <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
-        <div className="prose prose-invert prose-sm max-w-none space-y-6 text-foreground/70 leading-relaxed">
-          <p>Last updated: March 2026</p>
+        <h1 className="text-4xl font-bold mb-8 text-heading">Privacy Policy</h1>
+        <div className="space-y-6 text-foreground leading-relaxed">
+          <p className="text-muted">Last updated: March 2026</p>
 
-          <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">
-            1. Information We Collect
-          </h2>
+          <h2 className="text-xl font-semibold text-heading mt-8 mb-3">1. Information We Collect</h2>
           <p>
             We collect information you provide directly, such as your name,
             email address, company name, and message content when you use our
             contact form or communicate with us.
           </p>
 
-          <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">
-            2. How We Use Your Information
-          </h2>
+          <h2 className="text-xl font-semibold text-heading mt-8 mb-3">2. How We Use Your Information</h2>
           <p>
             We use the information to respond to your inquiries, provide our
             advisory services, improve our website, and communicate with you
             about our services.
           </p>
 
-          <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">
-            3. Data Sharing
-          </h2>
+          <h2 className="text-xl font-semibold text-heading mt-8 mb-3">3. Data Sharing</h2>
           <p>
             We do not sell your personal information. We may share data with
             service providers who assist in operating our website and conducting
             our business, subject to confidentiality obligations.
           </p>
 
-          <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">
-            4. Data Security
-          </h2>
+          <h2 className="text-xl font-semibold text-heading mt-8 mb-3">4. Data Security</h2>
           <p>
             We implement appropriate technical and organizational measures to
             protect your personal data against unauthorized access, alteration,
             disclosure, or destruction.
           </p>
 
-          <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">
-            5. Your Rights
-          </h2>
+          <h2 className="text-xl font-semibold text-heading mt-8 mb-3">5. Your Rights</h2>
           <p>
             Under GDPR, you have the right to access, rectify, erase, restrict
             processing, and port your data. To exercise these rights, contact us
             at info@blackqueenops.com.
           </p>
 
-          <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">
-            6. Contact
-          </h2>
+          <h2 className="text-xl font-semibold text-heading mt-8 mb-3">6. Contact</h2>
           <p>
             For privacy-related questions, contact us at{" "}
-            <a
-              href="mailto:info@blackqueenops.com"
-              className="text-gold hover:text-gold-light"
-            >
+            <a href="mailto:info@blackqueenops.com" className="text-gold hover:text-gold-dark font-medium">
               info@blackqueenops.com
-            </a>
-            .
+            </a>.
           </p>
         </div>
       </div>

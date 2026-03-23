@@ -17,13 +17,13 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-border-light">
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 bg-gold rounded-sm flex items-center justify-center">
-            <span className="text-black font-bold text-lg">Q</span>
+            <span className="text-white font-bold text-lg">Q</span>
           </div>
-          <span className="font-semibold text-lg tracking-tight">
+          <span className="font-semibold text-lg tracking-tight text-heading">
             Black Queen<span className="text-gold"> Ops</span>
           </span>
         </Link>
@@ -35,7 +35,7 @@ export default function Header() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="text-sm text-foreground/70 hover:text-gold transition-colors"
+                  className="text-sm text-muted hover:text-gold transition-colors"
                 >
                   {l.label}
                 </Link>
@@ -45,7 +45,7 @@ export default function Header() {
           <LangSwitch />
           <Link
             href="/contact"
-            className="text-sm bg-gold text-black px-4 py-2 rounded hover:bg-gold-light transition-colors font-medium"
+            className="text-sm bg-gold text-heading font-medium px-4 py-2 rounded hover:bg-gold-light transition-colors"
           >
             {t("nav.cta")}
           </Link>
@@ -55,7 +55,7 @@ export default function Header() {
         <div className="flex md:hidden items-center gap-3">
           <LangSwitch />
           <button
-            className="text-foreground"
+            className="text-heading"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -72,13 +72,13 @@ export default function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-surface border-b border-border px-6 py-4">
+        <div className="md:hidden bg-white border-b border-border-light px-6 py-4">
           <ul className="flex flex-col gap-4">
             {links.map((l) => (
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="text-foreground/70 hover:text-gold transition-colors"
+                  className="text-muted hover:text-gold transition-colors"
                   onClick={() => setOpen(false)}
                 >
                   {l.label}
@@ -88,7 +88,7 @@ export default function Header() {
             <li>
               <Link
                 href="/contact"
-                className="inline-block bg-gold text-black px-4 py-2 rounded hover:bg-gold-light transition-colors font-medium"
+                className="inline-block bg-gold text-heading font-medium px-4 py-2 rounded hover:bg-gold-light transition-colors"
                 onClick={() => setOpen(false)}
               >
                 {t("nav.cta")}
