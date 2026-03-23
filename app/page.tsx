@@ -3,16 +3,16 @@
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import ChessBackground from "@/components/ChessBackground";
-import ChessHeroBackground from "@/components/ChessHeroBackground";
+import ChessHero3D from "@/components/ChessHero3D";
 
 export default function Home() {
   const { t } = useLang();
 
   return (
     <>
-      {/* Hero — dark section with living chessboard */}
-      <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-surface-dark">
-        <ChessHeroBackground />
+      {/* Hero — 3D chess scene */}
+      <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-[#0a0a0a]" style={{ minHeight: '90vh' }}>
+        <ChessHero3D />
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
             <p className="text-gold text-sm font-medium tracking-widest uppercase mb-4">
