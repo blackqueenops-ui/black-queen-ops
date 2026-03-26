@@ -1,68 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLang } from "@/lib/i18n";
 import LangSwitch from "./LangSwitch";
 
-/* ─── Animated Logo ─── */
-function AnimatedLogo() {
-  const wrapRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return;
-
-    const alreadyAnimated = sessionStorage.getItem("logo_animated");
-    if (alreadyAnimated) {
-      el.classList.add("logo-no-animate");
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      el.classList.add("logo-animated");
-
-      const cleanup = setTimeout(() => {
-        el.querySelectorAll<HTMLElement>("[class*='logo-']").forEach((node) => {
-          node.style.willChange = "auto";
-        });
-        sessionStorage.setItem("logo_animated", "true");
-      }, 1800);
-
-      return () => clearTimeout(cleanup);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const blackLetters = "BLACK".split("");
-  const queenLetters = "QUEEN".split("");
-
+/* ─── Routevia Logo ─── */
+function RouteviaLogo() {
   return (
-    <div ref={wrapRef} className="logo-wrap">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 300 64"
-        width="150"
-        height="32"
-        aria-label="Black Queen Ops"
-        role="img"
-      >
-        <polygon className="logo-chevron" points="0,32 40,4 40,16 8,32 40,48 40,60 0,44" fill="#b8971f" />
-        <polygon className="logo-chevron2" points="14,32 54,4 54,16 22,32 54,48 54,60 14,44" fill="#b8971f" opacity="0.32" />
-        <line className="logo-line" x1="68" y1="32" x2="290" y2="32" stroke="#b8971f" strokeWidth="0.8" />
-        <g fontFamily="Arial Narrow, Arial, sans-serif" fontWeight="700" fontSize="26">
-          {blackLetters.map((ch, i) => (
-            <text key={`b${i}`} className="logo-letter-black" x={68 + i * 20} y="18" dominantBaseline="central" fill="#0d0d0d">{ch}</text>
-          ))}
-        </g>
-        <g fontFamily="Arial Narrow, Arial, sans-serif" fontWeight="700" fontSize="26">
-          {queenLetters.map((ch, i) => (
-            <text key={`q${i}`} className="logo-letter-queen" x={68 + i * 20} y="46" dominantBaseline="central" fill="#b8971f">{ch}</text>
-          ))}
-        </g>
-        <text className="logo-ops" x="69" y="59" dominantBaseline="central" fill="#666666" fontFamily="Arial Narrow, Arial, sans-serif" fontSize="9" letterSpacing="10">OPS</text>
+    <div className="flex items-center gap-2.5">
+      {/* Route node symbol */}
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="3" fill="#b8971f" opacity="0.9" />
+        <circle cx="14" cy="14" r="6" stroke="#b8971f" strokeWidth="0.8" opacity="0.3" />
+        <line x1="14" y1="8" x2="14" y2="2" stroke="#b8971f" strokeWidth="0.8" opacity="0.5" />
+        <line x1="14" y1="20" x2="14" y2="26" stroke="#b8971f" strokeWidth="0.8" opacity="0.5" />
+        <line x1="20" y1="14" x2="26" y2="14" stroke="#b8971f" strokeWidth="0.8" opacity="0.5" />
+        <line x1="8" y1="14" x2="2" y2="14" stroke="#b8971f" strokeWidth="0.8" opacity="0.3" />
+        <circle cx="14" cy="2" r="1.2" fill="#b8971f" opacity="0.4" />
+        <circle cx="26" cy="14" r="1.2" fill="#b8971f" opacity="0.4" />
       </svg>
+      {/* Wordmark */}
+      <span className="font-semibold text-lg tracking-tight text-text-on-dark">
+        Route<span className="text-gold">via</span>
+      </span>
     </div>
   );
 }
@@ -95,12 +56,12 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "nav-scrolled"
-          : "bg-white/90 backdrop-blur-md border-b border-border-light"
+          : "bg-surface-dark/90 backdrop-blur-md border-b border-border-dark"
       }`}
     >
       <nav className={`max-w-6xl mx-auto px-6 flex items-center justify-between transition-[height] duration-300 ${scrolled ? "h-14" : "h-16"}`}>
         <Link href="/" className="flex items-center gap-2">
-          <AnimatedLogo />
+          <RouteviaLogo />
         </Link>
 
         {/* Desktop */}
@@ -108,10 +69,7 @@ export default function Header() {
           <ul className="flex items-center gap-8">
             {links.map((l) => (
               <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className="nav-menu-link text-sm text-muted"
-                >
+                <Link href={l.href} className="nav-menu-link text-sm text-muted">
                   {l.label}
                 </Link>
               </li>
@@ -120,7 +78,7 @@ export default function Header() {
           <LangSwitch />
           <Link
             href="/contact"
-            className="btn-get-in-touch text-sm bg-gold text-heading font-medium px-4 py-2 rounded"
+            className="btn-get-in-touch text-sm border border-gold/30 text-text-on-dark font-medium px-4 py-2 rounded hover:border-gold/60"
           >
             {t("nav.cta")}
           </Link>
@@ -130,7 +88,7 @@ export default function Header() {
         <div className="flex md:hidden items-center gap-3">
           <LangSwitch />
           <button
-            className="text-heading"
+            className="text-text-on-dark"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -147,7 +105,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-white border-b border-border-light px-6 py-4">
+        <div className="md:hidden bg-surface-dark border-b border-border-dark px-6 py-4">
           <ul className="flex flex-col gap-4">
             {links.map((l) => (
               <li key={l.href}>
@@ -163,7 +121,7 @@ export default function Header() {
             <li>
               <Link
                 href="/contact"
-                className="btn-get-in-touch inline-block bg-gold text-heading font-medium px-4 py-2 rounded text-sm"
+                className="btn-get-in-touch inline-block border border-gold/30 text-text-on-dark font-medium px-4 py-2 rounded text-sm"
                 onClick={() => setOpen(false)}
               >
                 {t("nav.cta")}

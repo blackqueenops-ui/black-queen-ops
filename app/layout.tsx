@@ -12,9 +12,9 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Black Queen Ops — Merchant Onboarding & Payment Solutions",
+  title: "Routevia — Merchant Routing & Payment Infrastructure",
   description:
-    "Frontshop development, merchant onboarding, and payment infrastructure for digital goods, eSIM, and online education worldwide.",
+    "Routing infrastructure for merchant onboarding, frontshop systems, and payment flow architecture worldwide.",
 };
 
 export default function RootLayout({

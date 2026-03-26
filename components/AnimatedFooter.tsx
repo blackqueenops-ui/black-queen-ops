@@ -40,7 +40,6 @@ export default function AnimatedFooter() {
     <footer className="bg-surface-dark border-t border-border-dark">
       <div ref={footerRef} className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo + description */}
           <div className="md:col-span-2">
             <div
               className="flex items-center gap-2 mb-4"
@@ -50,11 +49,15 @@ export default function AnimatedFooter() {
                 transition: `opacity 500ms ${ease}, transform 500ms ${ease}`,
               }}
             >
-              <div className="w-7 h-7 bg-gold rounded-sm flex items-center justify-center">
-                <span className="text-white font-bold">Q</span>
-              </div>
+              {/* Route node icon */}
+              <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="3" fill="#b8971f" opacity="0.9" />
+                <circle cx="14" cy="14" r="6" stroke="#b8971f" strokeWidth="0.8" opacity="0.3" />
+                <line x1="14" y1="8" x2="14" y2="2" stroke="#b8971f" strokeWidth="0.8" opacity="0.5" />
+                <line x1="20" y1="14" x2="26" y2="14" stroke="#b8971f" strokeWidth="0.8" opacity="0.5" />
+              </svg>
               <span className="font-semibold tracking-tight text-text-on-dark">
-                Black Queen<span className="text-gold"> Ops</span>
+                Route<span className="text-gold">via</span>
               </span>
             </div>
             <p
@@ -69,7 +72,6 @@ export default function AnimatedFooter() {
             </p>
           </div>
 
-          {/* Company column */}
           <div
             style={{
               opacity: show ? 1 : 0,
@@ -85,7 +87,6 @@ export default function AnimatedFooter() {
             </ul>
           </div>
 
-          {/* Legal column */}
           <div
             style={{
               opacity: show ? 1 : 0,
@@ -101,7 +102,6 @@ export default function AnimatedFooter() {
           </div>
         </div>
 
-        {/* Divider line */}
         <div className="mt-10 pt-6 text-center text-xs text-text-muted-on-dark">
           <div
             className="border-t border-border-dark mb-6"
@@ -111,7 +111,7 @@ export default function AnimatedFooter() {
               transition: `transform 800ms cubic-bezier(0.16, 1, 0.3, 1) 400ms`,
             }}
           />
-          &copy; {new Date().getFullYear()} Black Queen Ops. {t("footer.copy")}
+          &copy; {new Date().getFullYear()} Routevia. {t("footer.copy")}
         </div>
       </div>
     </footer>

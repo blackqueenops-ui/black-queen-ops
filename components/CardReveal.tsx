@@ -66,7 +66,7 @@ function RevealCard({
 
   return (
     <div
-      className="card-reveal-wrap bg-white border border-border-light rounded-lg shadow-sm group"
+      className="card-reveal-wrap bg-surface-dark-alt border border-border-dark rounded-lg group"
       style={{
         opacity: revealed ? 1 : 0,
         transform: revealed ? "translateY(0)" : "translateY(20px)",

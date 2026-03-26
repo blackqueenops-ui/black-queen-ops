@@ -1,7 +1,7 @@
 "use client";
 
 import { useLang } from "@/lib/i18n";
-import ChessBackground from "@/components/ChessBackground";
+import RouteBackground from "@/components/RouteBackground";
 
 export default function Contact() {
   const { t } = useLang();
@@ -10,7 +10,7 @@ export default function Contact() {
     <>
       {/* Hero area — dark */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-surface-dark">
-        <ChessBackground variant="strategy" theme="dark" />
+        <RouteBackground variant="flow" theme="dark" />
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="max-w-2xl mx-auto text-center mb-14">
             <p className="text-gold text-sm font-medium tracking-widest uppercase mb-4">
@@ -30,20 +30,20 @@ export default function Contact() {
               <div className="space-y-6">
                 <div>
                   <div className="text-sm text-gold font-medium mb-1">{t("contact.email")}</div>
-                  <a href="mailto:info@blackqueenops.com" className="text-text-muted-on-dark hover:text-gold transition-colors">
-                    info@blackqueenops.com
+                  <a href="mailto:info@routevia.com" className="text-text-muted-on-dark hover:text-gold transition-colors">
+                    info@routevia.com
                   </a>
                 </div>
                 <div>
                   <div className="text-sm text-gold font-medium mb-1">{t("contact.telegram")}</div>
-                  <a href="https://t.me/blackqueenops" className="text-text-muted-on-dark hover:text-gold transition-colors">
-                    @blackqueenops
+                  <a href="https://t.me/routevia" className="text-text-muted-on-dark hover:text-gold transition-colors">
+                    @routevia
                   </a>
                 </div>
                 <div>
                   <div className="text-sm text-gold font-medium mb-1">{t("contact.linkedin")}</div>
-                  <a href="https://linkedin.com/company/blackqueenops" className="text-text-muted-on-dark hover:text-gold transition-colors">
-                    Black Queen Ops
+                  <a href="https://linkedin.com/company/routevia" className="text-text-muted-on-dark hover:text-gold transition-colors">
+                    Routevia
                   </a>
                 </div>
                 <div>

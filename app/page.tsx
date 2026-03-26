@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
-import ChessBackground from "@/components/ChessBackground";
-import ChessHero3D from "@/components/ChessHero3D";
+import RouteBackground from "@/components/RouteBackground";
+import RouteHero from "@/components/RouteHero";
 import StatsCounter from "@/components/StatsCounter";
 import CardReveal from "@/components/CardReveal";
 import StrategicSection from "@/components/StrategicSection";
@@ -14,9 +14,9 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero — 3D chess scene */}
+      {/* Hero */}
       <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-[#0a0a0a]" style={{ minHeight: '90vh' }}>
-        <ChessHero3D />
+        <RouteHero />
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
             <p className="text-gold text-sm font-medium tracking-widest uppercase mb-4">
@@ -32,13 +32,13 @@ export default function Home() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="bg-gold text-heading px-6 py-3 rounded font-medium hover:bg-gold-light transition-colors"
+                className="border border-white/20 bg-white/5 text-text-on-dark px-6 py-3 rounded font-medium hover:bg-white/10 transition-colors"
               >
                 {t("hero.cta1")}
               </Link>
               <Link
                 href="/services"
-                className="border border-gold text-gold px-6 py-3 rounded font-medium hover:bg-gold hover:text-heading transition-colors"
+                className="border border-gold/30 text-gold px-6 py-3 rounded font-medium hover:border-gold/60 transition-colors"
               >
                 {t("hero.cta2")}
               </Link>
@@ -47,8 +47,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats — light */}
-      <section className="border-y border-border-light bg-white">
+      {/* Stats */}
+      <section className="border-y border-border-dark bg-surface-dark">
         <StatsCounter
           labels={[
             t("stats.1.label"),
@@ -59,9 +59,9 @@ export default function Home() {
         />
       </section>
 
-      {/* Services Preview — light */}
+      {/* Services Preview */}
       <section className="relative py-20 md:py-28 overflow-hidden bg-background">
-        <ChessBackground variant="shield" theme="light" />
+        <RouteBackground variant="sparse" theme="dark" />
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="text-center mb-14">
             <p className="text-gold text-sm font-medium tracking-widest uppercase mb-2">
@@ -94,16 +94,16 @@ export default function Home() {
           </CardReveal>
 
           <div className="text-center mt-10">
-            <Link href="/services" className="text-gold text-sm font-medium hover:text-gold-dark transition-colors">
+            <Link href="/services" className="text-gold text-sm font-medium hover:text-gold-light transition-colors">
               {t("services.more")} &rarr;
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Why Us — dark */}
+      {/* Why Us */}
       <section className="relative py-20 md:py-28 bg-surface-dark-alt overflow-hidden">
-        <ChessBackground variant="speed" theme="dark" />
+        <RouteBackground variant="flow" theme="dark" />
         <div className="max-w-6xl mx-auto px-6 relative">
           <StrategicSection
             tag={t("why.tag")}
@@ -116,9 +116,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA — light */}
-      <section className="relative py-20 md:py-28 overflow-hidden bg-white">
-        <ChessBackground variant="default" theme="light" />
+      {/* CTA */}
+      <section className="relative py-20 md:py-28 overflow-hidden bg-surface-dark">
+        <RouteBackground variant="default" theme="dark" />
         <CTASection
           title={t("cta.title")}
           desc={t("cta.desc")}

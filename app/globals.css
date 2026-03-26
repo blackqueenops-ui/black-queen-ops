@@ -9,20 +9,20 @@
 }
 
 :root {
-  --background: #fafafa;
-  --foreground: #1a1a1a;
-  --heading: #0d0d0d;
-  --muted: #444444;
+  --background: #121215;
+  --foreground: #e8e8ec;
+  --heading: #f0f0f4;
+  --muted: #8a8a94;
   --gold: #b8971f;
   --gold-light: #d4af37;
   --gold-dark: #9a7d15;
-  --surface-dark: #0d0d0d;
-  --surface-dark-alt: #111111;
-  --text-on-dark: #f5f0e8;
-  --text-muted-on-dark: #c8c0b0;
-  --border-light: #e0dcd4;
-  --border-dark: #2a2a2a;
-  /* Shared easing tokens */
+  --surface-dark: #0e0e11;
+  --surface-dark-alt: #16161a;
+  --text-on-dark: #e8e8ec;
+  --text-muted-on-dark: #9a9aa4;
+  --border-light: #2a2a30;
+  --border-dark: #2a2a30;
+  /* Easing tokens */
   --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -55,21 +55,11 @@ body {
 }
 
 ::selection {
-  background: var(--gold);
+  background: rgba(184, 151, 31, 0.3);
   color: #fff;
 }
 
-/* ═══════════════════════════════════════
-   ANTI-FLICKER: backface-visibility
-   on all animated elements
-   ═══════════════════════════════════════ */
-.logo-wrap *,
-.card-reveal-wrap,
-.card-lid,
-.stat-bounce,
-.chess-notation,
-.cta-btn,
-.footer-link,
+/* Anti-flicker */
 [style*="transform"],
 [style*="opacity"] {
   backface-visibility: hidden;
@@ -95,7 +85,6 @@ body {
   transition-delay: 300ms;
 }
 
-/* Stats hover */
 .stat-cell {
   cursor: default;
   position: relative;
@@ -144,11 +133,7 @@ body {
   width: 100%;
   height: 50%;
   z-index: 10;
-  background-image: repeating-conic-gradient(
-    #1a1800 0% 25%,
-    #0d0d0d 0% 50%
-  );
-  background-size: 14px 14px;
+  background: #1a1a1e;
   transition: transform 600ms var(--ease-in-out);
   pointer-events: none;
 }
@@ -184,9 +169,9 @@ body {
 }
 
 .card-reveal-wrap:hover {
-  border-color: rgba(184, 151, 31, 0.35) !important;
+  border-color: rgba(184, 151, 31, 0.25) !important;
   transform: translateY(-4px);
-  box-shadow: 0 4px 20px rgba(184, 151, 31, 0.08);
+  box-shadow: 0 4px 20px rgba(184, 151, 31, 0.06);
 }
 
 .card-reveal-wrap .card-reveal-icon {
@@ -198,21 +183,19 @@ body {
 }
 
 /* ═══════════════════════════════════════
-   CHESS NOTATION PULSE + HOVER
+   ROUTE MARKERS
    ═══════════════════════════════════════ */
-@keyframes notationPulse {
-  0%, 100% { opacity: 0.7; }
-  50%      { opacity: 1; }
+@keyframes markerPulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 0.8; }
 }
 
-.chess-notation-visible {
-  animation: notationPulse 2000ms var(--ease-in-out) infinite;
+.route-marker-visible {
+  animation: markerPulse 2000ms var(--ease-in-out) infinite;
   animation-delay: 1000ms;
 }
 
-/* ═══════════════════════════════════════
-   STRATEGIC SECTION ITEMS HOVER
-   ═══════════════════════════════════════ */
+/* Strategic items hover */
 .strategic-item {
   cursor: default;
 }
@@ -233,11 +216,10 @@ body {
   width: 120px !important;
 }
 
-.strategic-item:hover .chess-notation {
-  opacity: 1 !important;
-  letter-spacing: 3px !important;
+.strategic-item:hover .route-marker {
+  opacity: 0.9 !important;
   filter: brightness(1.3);
-  transition: opacity 200ms var(--ease-out), letter-spacing 200ms var(--ease-out), filter 200ms var(--ease-out) !important;
+  transition: opacity 200ms var(--ease-out), filter 200ms var(--ease-out) !important;
 }
 
 /* ═══════════════════════════════════════
@@ -271,7 +253,7 @@ body {
   transform: translateX(-8px) translateY(-50%);
   font-size: 10px;
   letter-spacing: -2px;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.5);
   opacity: 0;
   transition:
     opacity 200ms var(--ease-out),
@@ -316,18 +298,15 @@ body {
 }
 
 /* ═══════════════════════════════════════
-   NAVBAR — SCROLL STATE
+   NAVBAR
    ═══════════════════════════════════════ */
 .nav-scrolled {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(18, 18, 21, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(184, 151, 31, 0.15);
+  border-bottom: 1px solid rgba(184, 151, 31, 0.1);
 }
 
-/* ═══════════════════════════════════════
-   NAV MENU LINKS — pure CSS underline
-   ═══════════════════════════════════════ */
 .nav-menu-link {
   position: relative;
   color: inherit;
@@ -351,12 +330,9 @@ body {
 }
 
 .nav-menu-link:hover {
-  color: #0d0d0d;
+  color: #f0f0f4;
 }
 
-/* ═══════════════════════════════════════
-   NAV CTA BUTTON — simple hover/active
-   ═══════════════════════════════════════ */
 .btn-get-in-touch {
   position: relative;
   overflow: visible;
@@ -391,7 +367,7 @@ body {
 
 @keyframes langGlow {
   from { box-shadow: 0 0 0px rgba(184, 151, 31, 0); }
-  to   { box-shadow: 0 0 6px rgba(184, 151, 31, 0.3); }
+  to   { box-shadow: 0 0 6px rgba(184, 151, 31, 0.2); }
 }
 
 .lang-btn-active {
@@ -399,24 +375,15 @@ body {
 }
 
 /* ═══════════════════════════════════════
-   REDUCED MOTION — GLOBAL
+   REDUCED MOTION
    ═══════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
-  .stat-bounce {
-    animation: none;
-  }
-
-  .chess-notation-visible {
-    animation: none;
-    opacity: 0.7 !important;
-  }
-
+  .stat-bounce,
+  .route-marker-visible,
   .lang-btn-active {
     animation: none;
-    box-shadow: 0 0 6px rgba(184, 151, 31, 0.3);
   }
 
-  /* Keep color transitions, remove transforms */
   .card-reveal-wrap,
   .card-reveal-wrap .card-reveal-icon,
   .strategic-item .strategic-title,

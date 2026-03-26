@@ -21,8 +21,8 @@ const translations: Translations = {
   "hero.title1": { en: "Your Gateway to", ru: "Ваш путь к" },
   "hero.title2": { en: "Global Payments", ru: "глобальным платежам" },
   "hero.desc": {
-    en: "Black Queen Ops builds frontshops, onboarding flows, and payment infrastructure for digital goods, eSIM, and online education. We help merchants get approved and start processing worldwide.",
-    ru: "Black Queen Ops создаёт фронтшопы, онбординг-процессы и платёжную инфраструктуру для цифровых товаров, eSIM и онлайн-образования. Мы помогаем мерчантам пройти одобрение и начать процессинг по всему миру.",
+    en: "Routevia builds frontshops, onboarding flows, and payment infrastructure for digital goods, eSIM, and online education. We help merchants get approved and start processing worldwide.",
+    ru: "Routevia создаёт фронтшопы, онбординг-процессы и платёжную инфраструктуру для цифровых товаров, eSIM и онлайн-образования. Мы помогаем мерчантам пройти одобрение и начать процессинг по всему миру.",
   },
   "hero.cta1": { en: "Start Onboarding", ru: "Начать онбординг" },
   "hero.cta2": { en: "Our Services", ru: "Наши услуги" },
@@ -58,7 +58,7 @@ const translations: Translations = {
   "services.more": { en: "View All Services", ru: "Все услуги" },
 
   // Why us
-  "why.tag": { en: "Why Black Queen", ru: "Почему Black Queen" },
+  "why.tag": { en: "Why Routevia", ru: "Почему Routevia" },
   "why.title": { en: "Your Strategic Advantage", ru: "Ваше стратегическое преимущество" },
   "why.1.title": { en: "Frontshop Expertise", ru: "Экспертиза фронтшопов" },
   "why.1.desc": {
@@ -94,8 +94,8 @@ const translations: Translations = {
   "about.title1": { en: "Powering Merchant", ru: "Ускоряем" },
   "about.title2": { en: "Success", ru: "успех мерчантов" },
   "about.desc": {
-    en: "Black Queen Ops is an international fintech company specializing in merchant onboarding, frontshop development, and payment infrastructure for digital businesses.",
-    ru: "Black Queen Ops — международная финтех-компания, специализирующаяся на онбординге мерчантов, разработке фронтшопов и платёжной инфраструктуре для цифрового бизнеса.",
+    en: "Routevia is an international fintech company specializing in merchant onboarding, frontshop development, and payment infrastructure for digital businesses.",
+    ru: "Routevia — международная финтех-компания, специализирующаяся на онбординге мерчантов, разработке фронтшопов и платёжной инфраструктуре для цифрового бизнеса.",
   },
   "about.mission.title": { en: "Our Mission", ru: "Наша миссия" },
   "about.mission.desc": {
