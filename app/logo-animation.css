@@ -1,0 +1,238 @@
+/* =============================================
+   BLACK QUEEN OPS — Logo entrance animation
+   ============================================= */
+
+/* --- Custom properties for timing --- */
+:root {
+  --logo-delay-start: 300ms;
+  --logo-chevron-duration: 400ms;
+  --logo-chevron2-delay: 80ms;
+  --logo-line-duration: 350ms;
+  --logo-letter-stagger: 40ms;
+  --logo-letter-duration: 350ms;
+  --logo-ops-duration: 250ms;
+  --logo-flash-duration: 300ms;
+}
+
+/* --- Base: hide all parts before animation --- */
+.logo-wrap .logo-chevron,
+.logo-wrap .logo-chevron2,
+.logo-wrap .logo-line,
+.logo-wrap .logo-letter-black,
+.logo-wrap .logo-letter-queen,
+.logo-wrap .logo-ops {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.logo-wrap .logo-line {
+  will-change: transform, opacity;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* --- Already animated (sessionStorage flag) — show immediately --- */
+.logo-wrap.logo-no-animate .logo-chevron,
+.logo-wrap.logo-no-animate .logo-chevron2,
+.logo-wrap.logo-no-animate .logo-line,
+.logo-wrap.logo-no-animate .logo-letter-black,
+.logo-wrap.logo-no-animate .logo-letter-queen,
+.logo-wrap.logo-no-animate .logo-ops {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+  animation: none !important;
+  filter: none;
+}
+
+/* =============================================
+   STEP 1: Chevron slides in from left
+   ============================================= */
+@keyframes chevronIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.logo-animated .logo-chevron {
+  animation: chevronIn var(--logo-chevron-duration) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.logo-animated .logo-chevron2 {
+  animation: chevronIn var(--logo-chevron-duration) cubic-bezier(0.16, 1, 0.3, 1) var(--logo-chevron2-delay) forwards;
+}
+
+/* =============================================
+   STEP 2: Horizontal line draws
+   ============================================= */
+@keyframes lineIn {
+  0% {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.logo-animated .logo-line {
+  animation: lineIn var(--logo-line-duration) cubic-bezier(0.76, 0, 0.24, 1) 300ms forwards;
+}
+
+/* =============================================
+   STEP 3: BLACK letters appear (stagger 40ms)
+   ============================================= */
+@keyframes letterIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-animated .logo-letter-black {
+  animation: letterIn var(--logo-letter-duration) cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.logo-animated .logo-letter-black:nth-child(1) { animation-delay: 400ms; }
+.logo-animated .logo-letter-black:nth-child(2) { animation-delay: 440ms; }
+.logo-animated .logo-letter-black:nth-child(3) { animation-delay: 480ms; }
+.logo-animated .logo-letter-black:nth-child(4) { animation-delay: 520ms; }
+.logo-animated .logo-letter-black:nth-child(5) { animation-delay: 560ms; }
+
+/* =============================================
+   STEP 4: QUEEN letters appear (stagger 40ms)
+   ============================================= */
+.logo-animated .logo-letter-queen {
+  animation: letterIn var(--logo-letter-duration) cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.logo-animated .logo-letter-queen:nth-child(1) { animation-delay: 550ms; }
+.logo-animated .logo-letter-queen:nth-child(2) { animation-delay: 590ms; }
+.logo-animated .logo-letter-queen:nth-child(3) { animation-delay: 630ms; }
+.logo-animated .logo-letter-queen:nth-child(4) { animation-delay: 670ms; }
+.logo-animated .logo-letter-queen:nth-child(5) { animation-delay: 710ms; }
+
+/* =============================================
+   STEP 5: OPS fades in + letter-spacing
+   ============================================= */
+@keyframes opsIn {
+  0% {
+    opacity: 0;
+    letter-spacing: 20px;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 10px;
+  }
+}
+
+.logo-animated .logo-ops {
+  animation: opsIn var(--logo-ops-duration) cubic-bezier(0.25, 1, 0.5, 1) 900ms forwards;
+}
+
+/* =============================================
+   STEP 6: Gold flash on chevron + line blink
+   ============================================= */
+@keyframes goldFlash {
+  0%   { filter: brightness(1); }
+  50%  { filter: brightness(1.4); }
+  100% { filter: brightness(1); }
+}
+
+@keyframes lineBlink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.logo-animated .logo-chevron {
+  animation:
+    chevronIn var(--logo-chevron-duration) cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    goldFlash var(--logo-flash-duration) cubic-bezier(0.4, 0, 0.2, 1) 1100ms forwards;
+}
+
+.logo-animated .logo-chevron2 {
+  animation:
+    chevronIn var(--logo-chevron-duration) cubic-bezier(0.16, 1, 0.3, 1) var(--logo-chevron2-delay) forwards,
+    goldFlash var(--logo-flash-duration) cubic-bezier(0.4, 0, 0.2, 1) 1100ms forwards;
+}
+
+.logo-animated .logo-line {
+  animation:
+    lineIn var(--logo-line-duration) cubic-bezier(0.76, 0, 0.24, 1) 300ms forwards,
+    lineBlink 200ms cubic-bezier(0.4, 0, 0.2, 1) 1100ms forwards;
+}
+
+/* =============================================
+   HOVER EFFECTS (always active after animation)
+   ============================================= */
+.logo-wrap:hover .logo-chevron,
+.logo-wrap:hover .logo-chevron2 {
+  transform: translateX(3px);
+  transition: transform 200ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.logo-wrap .logo-chevron,
+.logo-wrap .logo-chevron2 {
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-wrap:hover .logo-line {
+  filter: drop-shadow(0 0 6px rgba(184, 151, 31, 0.6));
+  transition: filter 200ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.logo-wrap .logo-line {
+  transition: filter 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =============================================
+   REDUCED MOTION
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  .logo-wrap .logo-chevron,
+  .logo-wrap .logo-chevron2,
+  .logo-wrap .logo-line,
+  .logo-wrap .logo-letter-black,
+  .logo-wrap .logo-letter-queen,
+  .logo-wrap .logo-ops {
+    animation: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+
+  @keyframes simpleFade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .logo-animated.logo-wrap {
+    animation: simpleFade 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  .logo-animated .logo-chevron,
+  .logo-animated .logo-chevron2,
+  .logo-animated .logo-line,
+  .logo-animated .logo-letter-black,
+  .logo-animated .logo-letter-queen,
+  .logo-animated .logo-ops {
+    opacity: 1;
+    transform: none;
+  }
+}

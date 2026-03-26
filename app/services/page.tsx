@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import ChessBackground from "@/components/ChessBackground";
+import PricingSection from "@/components/PricingSection";
 
 export default function Services() {
   const { t } = useLang();
@@ -58,20 +59,8 @@ export default function Services() {
 
       {/* Pricing — dark */}
       <section className="py-20 bg-surface-dark-alt">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-text-on-dark">{t("pricing.title")}</h2>
-          <p className="text-text-muted-on-dark mb-10 max-w-lg mx-auto">{t("pricing.desc")}</p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="border border-border-dark rounded-lg p-6 hover:border-gold transition-colors">
-                <div className="text-gold text-sm font-medium uppercase tracking-wider mb-2">
-                  {t(`pricing.${i}.model`)}
-                </div>
-                <div className="text-2xl font-bold mb-3 text-text-on-dark">{t(`pricing.${i}.price`)}</div>
-                <p className="text-sm text-text-muted-on-dark">{t(`pricing.${i}.desc`)}</p>
-              </div>
-            ))}
-          </div>
+        <div className="max-w-6xl mx-auto px-6">
+          <PricingSection />
         </div>
       </section>
 

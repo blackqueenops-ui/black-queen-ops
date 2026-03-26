@@ -4,6 +4,10 @@ import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import ChessBackground from "@/components/ChessBackground";
 import ChessHero3D from "@/components/ChessHero3D";
+import StatsCounter from "@/components/StatsCounter";
+import CardReveal from "@/components/CardReveal";
+import StrategicSection from "@/components/StrategicSection";
+import CTASection from "@/components/CTASection";
 
 export default function Home() {
   const { t } = useLang();
@@ -45,18 +49,14 @@ export default function Home() {
 
       {/* Stats — light */}
       <section className="border-y border-border-light bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-gold">
-                {t(`stats.${i}.value`)}
-              </div>
-              <div className="text-sm text-muted mt-1">
-                {t(`stats.${i}.label`)}
-              </div>
-            </div>
-          ))}
-        </div>
+        <StatsCounter
+          labels={[
+            t("stats.1.label"),
+            t("stats.2.label"),
+            t("stats.3.label"),
+            t("stats.4.label"),
+          ]}
+        />
       </section>
 
       {/* Services Preview — light */}
@@ -72,7 +72,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <CardReveal>
             {[1, 2, 3].map((i) => {
               const icons = [
                 <path key="1" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" strokeLinecap="round" strokeLinejoin="round" />,
@@ -80,11 +80,8 @@ export default function Home() {
                 <path key="3" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />,
               ];
               return (
-                <div
-                  key={i}
-                  className="bg-white border border-border-light rounded-lg p-6 hover:border-gold transition-colors group shadow-sm"
-                >
-                  <div className="w-10 h-10 rounded bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors">
+                <div key={i}>
+                  <div className="card-reveal-icon w-10 h-10 rounded bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold">
                       {icons[i - 1]}
                     </svg>
@@ -94,7 +91,7 @@ export default function Home() {
                 </div>
               );
             })}
-          </div>
+          </CardReveal>
 
           <div className="text-center mt-10">
             <Link href="/services" className="text-gold text-sm font-medium hover:text-gold-dark transition-colors">
@@ -108,46 +105,25 @@ export default function Home() {
       <section className="relative py-20 md:py-28 bg-surface-dark-alt overflow-hidden">
         <ChessBackground variant="speed" theme="dark" />
         <div className="max-w-6xl mx-auto px-6 relative">
-          <div className="text-center mb-14">
-            <p className="text-gold text-sm font-medium tracking-widest uppercase mb-2">
-              {t("why.tag")}
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-text-on-dark">
-              {t("why.title")}
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="flex gap-4">
-                <div className="w-2 h-2 rounded-full bg-gold mt-2 shrink-0" />
-                <div>
-                  <h3 className="font-semibold mb-1 text-text-on-dark">{t(`why.${i}.title`)}</h3>
-                  <p className="text-sm text-text-muted-on-dark leading-relaxed">{t(`why.${i}.desc`)}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <StrategicSection
+            tag={t("why.tag")}
+            title={t("why.title")}
+            items={[1, 2, 3, 4].map((i) => ({
+              title: t(`why.${i}.title`),
+              desc: t(`why.${i}.desc`),
+            }))}
+          />
         </div>
       </section>
 
       {/* CTA — light */}
       <section className="relative py-20 md:py-28 overflow-hidden bg-white">
         <ChessBackground variant="default" theme="light" />
-        <div className="max-w-6xl mx-auto px-6 text-center relative">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-heading">
-            {t("cta.title")}
-          </h2>
-          <p className="text-muted mb-8 max-w-lg mx-auto">
-            {t("cta.desc")}
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-gold text-heading px-8 py-3 rounded font-medium hover:bg-gold-light transition-colors"
-          >
-            {t("cta.button")}
-          </Link>
-        </div>
+        <CTASection
+          title={t("cta.title")}
+          desc={t("cta.desc")}
+          buttonText={t("cta.button")}
+        />
       </section>
     </>
   );

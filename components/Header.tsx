@@ -1,12 +1,76 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useLang } from "@/lib/i18n";
 import LangSwitch from "./LangSwitch";
 
+/* ─── Animated Logo ─── */
+function AnimatedLogo() {
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+
+    const alreadyAnimated = sessionStorage.getItem("logo_animated");
+    if (alreadyAnimated) {
+      el.classList.add("logo-no-animate");
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      el.classList.add("logo-animated");
+
+      const cleanup = setTimeout(() => {
+        el.querySelectorAll<HTMLElement>("[class*='logo-']").forEach((node) => {
+          node.style.willChange = "auto";
+        });
+        sessionStorage.setItem("logo_animated", "true");
+      }, 1800);
+
+      return () => clearTimeout(cleanup);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const blackLetters = "BLACK".split("");
+  const queenLetters = "QUEEN".split("");
+
+  return (
+    <div ref={wrapRef} className="logo-wrap">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 300 64"
+        width="150"
+        height="32"
+        aria-label="Black Queen Ops"
+        role="img"
+      >
+        <polygon className="logo-chevron" points="0,32 40,4 40,16 8,32 40,48 40,60 0,44" fill="#b8971f" />
+        <polygon className="logo-chevron2" points="14,32 54,4 54,16 22,32 54,48 54,60 14,44" fill="#b8971f" opacity="0.32" />
+        <line className="logo-line" x1="68" y1="32" x2="290" y2="32" stroke="#b8971f" strokeWidth="0.8" />
+        <g fontFamily="Arial Narrow, Arial, sans-serif" fontWeight="700" fontSize="26">
+          {blackLetters.map((ch, i) => (
+            <text key={`b${i}`} className="logo-letter-black" x={68 + i * 20} y="18" dominantBaseline="central" fill="#0d0d0d">{ch}</text>
+          ))}
+        </g>
+        <g fontFamily="Arial Narrow, Arial, sans-serif" fontWeight="700" fontSize="26">
+          {queenLetters.map((ch, i) => (
+            <text key={`q${i}`} className="logo-letter-queen" x={68 + i * 20} y="46" dominantBaseline="central" fill="#b8971f">{ch}</text>
+          ))}
+        </g>
+        <text className="logo-ops" x="69" y="59" dominantBaseline="central" fill="#666666" fontFamily="Arial Narrow, Arial, sans-serif" fontSize="9" letterSpacing="10">OPS</text>
+      </svg>
+    </div>
+  );
+}
+
+/* ─── Header ─── */
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { t } = useLang();
 
   const links = [
@@ -16,16 +80,27 @@ export default function Header() {
     { href: "/contact", label: t("nav.contact") },
   ];
 
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 80);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-border-light">
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "nav-scrolled"
+          : "bg-white/90 backdrop-blur-md border-b border-border-light"
+      }`}
+    >
+      <nav className={`max-w-6xl mx-auto px-6 flex items-center justify-between transition-[height] duration-300 ${scrolled ? "h-14" : "h-16"}`}>
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gold rounded-sm flex items-center justify-center">
-            <span className="text-white font-bold text-lg">Q</span>
-          </div>
-          <span className="font-semibold text-lg tracking-tight text-heading">
-            Black Queen<span className="text-gold"> Ops</span>
-          </span>
+          <AnimatedLogo />
         </Link>
 
         {/* Desktop */}
@@ -35,7 +110,7 @@ export default function Header() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="text-sm text-muted hover:text-gold transition-colors"
+                  className="nav-menu-link text-sm text-muted"
                 >
                   {l.label}
                 </Link>
@@ -45,7 +120,7 @@ export default function Header() {
           <LangSwitch />
           <Link
             href="/contact"
-            className="text-sm bg-gold text-heading font-medium px-4 py-2 rounded hover:bg-gold-light transition-colors"
+            className="btn-get-in-touch text-sm bg-gold text-heading font-medium px-4 py-2 rounded"
           >
             {t("nav.cta")}
           </Link>
@@ -78,7 +153,7 @@ export default function Header() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="text-muted hover:text-gold transition-colors"
+                  className="text-muted text-sm"
                   onClick={() => setOpen(false)}
                 >
                   {l.label}
@@ -88,7 +163,7 @@ export default function Header() {
             <li>
               <Link
                 href="/contact"
-                className="inline-block bg-gold text-heading font-medium px-4 py-2 rounded hover:bg-gold-light transition-colors"
+                className="btn-get-in-touch inline-block bg-gold text-heading font-medium px-4 py-2 rounded text-sm"
                 onClick={() => setOpen(false)}
               >
                 {t("nav.cta")}
