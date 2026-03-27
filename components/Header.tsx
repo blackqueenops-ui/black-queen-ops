@@ -5,25 +5,29 @@ import { useState, useEffect, useCallback } from "react";
 import { useLang } from "@/lib/i18n";
 import LangSwitch from "./LangSwitch";
 
-/* ─── Routevia Logo ─── */
+/* ─── Routevia Logo — Nested Brackets ─── */
 function RouteviaLogo() {
   return (
-    <div className="flex items-center gap-2.5">
-      {/* Route node symbol */}
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="14" cy="14" r="3" fill="#b8971f" opacity="0.9" />
-        <circle cx="14" cy="14" r="6" stroke="#b8971f" strokeWidth="0.8" opacity="0.3" />
-        <line x1="14" y1="8" x2="14" y2="2" stroke="#b8971f" strokeWidth="0.8" opacity="0.5" />
-        <line x1="14" y1="20" x2="14" y2="26" stroke="#b8971f" strokeWidth="0.8" opacity="0.5" />
-        <line x1="20" y1="14" x2="26" y2="14" stroke="#b8971f" strokeWidth="0.8" opacity="0.5" />
-        <line x1="8" y1="14" x2="2" y2="14" stroke="#b8971f" strokeWidth="0.8" opacity="0.3" />
-        <circle cx="14" cy="2" r="1.2" fill="#b8971f" opacity="0.4" />
-        <circle cx="26" cy="14" r="1.2" fill="#b8971f" opacity="0.4" />
-      </svg>
+    <div className="flex flex-col items-start leading-none">
       {/* Wordmark */}
       <span className="font-semibold text-lg tracking-tight text-text-on-dark">
         Route<span className="text-gold">via</span>
       </span>
+      {/* Nested brackets with node underneath */}
+      <svg width="72" height="10" viewBox="0 0 72 10" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-0.5">
+        {/* Outer left bracket */}
+        <path d="M8 1L3 5L8 9" stroke="#b8971f" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
+        {/* Inner left bracket */}
+        <path d="M18 2L14 5L18 8" stroke="#b8971f" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.6" />
+        {/* Center line */}
+        <line x1="20" y1="5" x2="52" y2="5" stroke="#b8971f" strokeWidth="0.8" opacity="0.25" />
+        {/* Center node */}
+        <circle cx="36" cy="5" r="2.2" fill="#b8971f" opacity="0.8" />
+        {/* Inner right bracket */}
+        <path d="M54 2L58 5L54 8" stroke="#b8971f" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.6" />
+        {/* Outer right bracket */}
+        <path d="M64 1L69 5L64 9" stroke="#b8971f" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
+      </svg>
     </div>
   );
 }
@@ -105,7 +109,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-surface-dark border-b border-border-dark px-6 py-4">
+        <div className="md:hidden bg-surface-dark border-b border-border-dark px-4 sm:px-6 py-4 max-h-[70vh] overflow-y-auto">
           <ul className="flex flex-col gap-4">
             {links.map((l) => (
               <li key={l.href}>

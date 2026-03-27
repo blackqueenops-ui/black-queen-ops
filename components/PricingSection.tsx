@@ -85,7 +85,7 @@ export default function PricingSection() {
   return (
     <div ref={sectionRef}>
       {/* Header */}
-      <div className="text-center mb-14">
+      <div className="text-center mb-8 md:mb-14">
         <p
           className="text-gold text-sm font-medium tracking-widest uppercase mb-2"
           style={fadeUp(0)}
@@ -107,11 +107,11 @@ export default function PricingSection() {
       </div>
 
       {/* Cards */}
-      <div className="grid md:grid-cols-3 gap-6 mb-10">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 md:mb-10">
         {cards.map((card, i) => (
           <div
             key={card.key}
-            className={`relative rounded-lg p-6 flex flex-col ${
+            className={`relative rounded-lg p-4 sm:p-6 flex flex-col ${
               card.featured
                 ? "border-2 border-gold bg-surface-dark"
                 : "border border-border-dark bg-surface-dark-alt"
@@ -156,7 +156,7 @@ export default function PricingSection() {
             {/* CTA */}
             <Link
               href="/contact"
-              className={`block text-center text-sm font-medium px-4 py-2.5 rounded transition-all duration-200 ${
+              className={`block text-center text-sm font-medium px-4 py-3 rounded transition-all duration-200 ${
                 card.featured
                   ? "bg-gold text-heading hover:brightness-110"
                   : "border border-gold/40 text-gold hover:bg-gold/10"

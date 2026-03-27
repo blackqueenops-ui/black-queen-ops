@@ -64,7 +64,7 @@ export default function RouteHero() {
             x: offsetX + c * spacing,
             y: offsetY + r * spacing,
             radius: 1.5 + Math.random() * 0.5,
-            opacity: 0.04 + Math.random() * 0.06,
+            opacity: 0.06 + Math.random() * 0.08,
             connections: [],
           });
         }
@@ -129,7 +129,7 @@ export default function RouteHero() {
       for (const [a, b] of paths) {
         const na = nodes[a];
         const nb = nodes[b];
-        let alpha = 0.04;
+        let alpha = 0.06;
 
         // Brighten near mouse
         if (mx >= 0) {
@@ -137,7 +137,7 @@ export default function RouteHero() {
           const cy = (na.y + nb.y) / 2;
           const dist = Math.hypot(cx - mx, cy - my);
           if (dist < 120) {
-            alpha += (1 - dist / 120) * 0.12;
+            alpha += (1 - dist / 120) * 0.2;
           }
         }
 
@@ -159,7 +159,7 @@ export default function RouteHero() {
         if (mx >= 0) {
           const dist = Math.hypot(node.x - mx, node.y - my);
           if (dist < 100) {
-            alpha += (1 - dist / 100) * 0.3;
+            alpha += (1 - dist / 100) * 0.45;
           }
         }
 
@@ -199,7 +199,7 @@ export default function RouteHero() {
 
         ctx.beginPath();
         ctx.arc(px, py, dot.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(184, 151, 31, ${0.15 + dot.speed * 8})`;
+        ctx.fillStyle = `rgba(184, 151, 31, ${0.25 + dot.speed * 10})`;
         ctx.fill();
       }
 

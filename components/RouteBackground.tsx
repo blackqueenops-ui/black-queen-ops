@@ -65,7 +65,7 @@ export default function RouteBackground({
           nodesRef.current.push({
             x: c * spacing + (Math.random() - 0.5) * spacing * 0.3,
             y: r * spacing + (Math.random() - 0.5) * spacing * 0.3,
-            baseOpacity: 0.02 + Math.random() * 0.03,
+            baseOpacity: 0.03 + Math.random() * 0.04,
             phase: Math.random() * Math.PI * 2,
           });
         }
@@ -104,8 +104,8 @@ export default function RouteBackground({
         fromIdx,
         toIdx,
         progress: 0,
-        speed: 0.003 + Math.random() * 0.005,
-        opacity: 0.06 + Math.random() * 0.08,
+        speed: 0.005 + Math.random() * 0.008,
+        opacity: 0.1 + Math.random() * 0.12,
       });
     }
 

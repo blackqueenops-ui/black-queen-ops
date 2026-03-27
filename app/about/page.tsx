@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import RouteBackground from "@/components/RouteBackground";
+import SectionConnector from "@/components/SectionConnector";
 
 export default function About() {
   const { t } = useLang();
@@ -10,15 +11,12 @@ export default function About() {
   return (
     <>
       {/* Hero — dark */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-surface-dark">
+      <section className="relative pt-24 pb-12 md:pt-40 md:pb-20 overflow-hidden bg-surface-dark">
         <RouteBackground variant="flow" theme="dark" />
-        <div className="max-w-6xl mx-auto px-6 relative">
-          <p className="text-gold text-sm font-medium tracking-widest uppercase mb-4">
-            {t("about.tag")}
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-text-on-dark">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-text-on-dark">
             {t("about.title1")}{" "}
-            <span className="text-gold">{t("about.title2")}</span>
+            <span className="text-text-on-dark">Route</span><span className="text-gold">via</span>
           </h1>
           <p className="text-lg text-text-muted-on-dark max-w-2xl">
             {t("about.desc")}
@@ -28,7 +26,7 @@ export default function About() {
 
       {/* Mission & Vision — dark */}
       <section className="py-16 bg-surface-dark border-y border-border-dark">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-6 md:gap-12">
           <div>
             <h2 className="text-2xl font-bold mb-4 text-text-on-dark">{t("about.mission.title")}</h2>
             <p className="text-text-muted-on-dark leading-relaxed">{t("about.mission.desc")}</p>
@@ -40,14 +38,16 @@ export default function About() {
         </div>
       </section>
 
+      <SectionConnector />
+
       {/* Values — dark */}
-      <section className="relative py-20 overflow-hidden bg-background">
+      <section className="relative py-14 md:py-28 overflow-hidden bg-background">
         <RouteBackground variant="sparse" theme="dark" />
-        <div className="max-w-6xl mx-auto px-6 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
           <h2 className="text-3xl font-bold text-center mb-12 text-text-on-dark">{t("about.values.title")}</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-surface-dark border border-border-dark rounded-lg p-6 shadow-sm">
+              <div key={i} className="bg-surface-dark border border-border-dark rounded-lg p-4 sm:p-6 shadow-sm">
                 <div className="w-8 h-1 bg-gold rounded mb-4" />
                 <h3 className="font-semibold text-lg mb-2 text-text-on-dark">{t(`about.values.${i}.title`)}</h3>
                 <p className="text-sm text-text-muted-on-dark leading-relaxed">{t(`about.values.${i}.desc`)}</p>
@@ -57,35 +57,36 @@ export default function About() {
         </div>
       </section>
 
-      {/* Roadmap — dark */}
-      <section className="relative py-20 bg-surface-dark-alt overflow-hidden">
+      <SectionConnector />
+
+      {/* How it works */}
+      <section className="relative py-14 md:py-28 bg-surface-dark-alt overflow-hidden">
         <RouteBackground variant="dense" theme="dark" />
-        <div className="max-w-6xl mx-auto px-6 relative">
-          <h2 className="text-3xl font-bold text-center mb-12 text-text-on-dark">{t("roadmap.title")}</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i}>
-                <div className="text-gold text-sm font-medium tracking-widest uppercase mb-1">
-                  {t(`roadmap.${i}.year`)}
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-text-on-dark">{t(`roadmap.${i}.title`)}</h3>
-                <ul className="space-y-2">
-                  {t(`roadmap.${i}.items`).split("|").map((item) => (
-                    <li key={item} className="text-sm text-text-muted-on-dark flex gap-2">
-                      <span className="text-gold mt-0.5">&#x2022;</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
+          <h2 className="text-3xl font-bold text-center mb-12 text-text-on-dark">{t("process.title")}</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="bg-surface-dark border border-border-dark rounded-lg p-4 sm:p-6">
+                <span className="font-mono text-xs text-gold opacity-50 tracking-widest">
+                  {String(i).padStart(2, "0")}
+                </span>
+                <h3 className="text-base sm:text-lg font-bold mt-2 mb-2 text-text-on-dark">
+                  {t(`process.${i}.step`)}
+                </h3>
+                <p className="text-sm text-text-muted-on-dark leading-relaxed">
+                  {t(`process.${i}.desc`)}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      <SectionConnector />
+
       {/* CTA — dark */}
-      <section className="py-20 bg-surface-dark">
-        <div className="max-w-6xl mx-auto px-6 text-center">
+      <section className="py-14 md:py-28 bg-surface-dark">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl font-bold mb-4 text-text-on-dark">{t("about.cta.title")}</h2>
           <p className="text-text-muted-on-dark mb-8 max-w-lg mx-auto">{t("about.cta.desc")}</p>
           <Link
