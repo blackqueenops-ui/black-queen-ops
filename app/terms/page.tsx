@@ -50,8 +50,8 @@ export default function Terms() {
           <h2 className="text-xl font-semibold text-text-on-dark mt-8 mb-3">6. Contact</h2>
           <p>
             Questions about these terms? Contact us at{" "}
-            <a href="mailto:info@routevia.com" className="text-gold hover:text-gold-dark font-medium">
-              info@routevia.com
+            <a href="mailto:welcome@routevia.io" className="text-gold hover:text-gold-dark font-medium">
+              welcome@routevia.io
             </a>.
           </p>
         </div>

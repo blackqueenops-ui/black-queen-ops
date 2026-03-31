@@ -30,14 +30,14 @@ export default function Contact() {
               <div className="space-y-6">
                 <div>
                   <div className="text-sm text-gold font-medium mb-1">{t("contact.email")}</div>
-                  <a href="mailto:info@routevia.com" className="text-text-muted-on-dark hover:text-gold transition-colors">
-                    info@routevia.com
+                  <a href="mailto:welcome@routevia.io" className="text-text-muted-on-dark hover:text-gold transition-colors">
+                    welcome@routevia.io
                   </a>
                 </div>
                 <div>
                   <div className="text-sm text-gold font-medium mb-1">{t("contact.telegram")}</div>
-                  <a href="https://t.me/routevia" className="text-text-muted-on-dark hover:text-gold transition-colors">
-                    @routevia
+                  <a href="https://t.me/routeviaio" className="text-text-muted-on-dark hover:text-gold transition-colors">
+                    @routeviaio
                   </a>
                 </div>
                 <div>

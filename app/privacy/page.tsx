@@ -44,14 +44,14 @@ export default function Privacy() {
           <p>
             Under GDPR, you have the right to access, rectify, erase, restrict
             processing, and port your data. To exercise these rights, contact us
-            at info@routevia.com.
+            at welcome@routevia.io.
           </p>
 
           <h2 className="text-xl font-semibold text-text-on-dark mt-8 mb-3">6. Contact</h2>
           <p>
             For privacy-related questions, contact us at{" "}
-            <a href="mailto:info@routevia.com" className="text-gold hover:text-gold-dark font-medium">
-              info@routevia.com
+            <a href="mailto:welcome@routevia.io" className="text-gold hover:text-gold-dark font-medium">
+              welcome@routevia.io
             </a>.
           </p>
         </div>
